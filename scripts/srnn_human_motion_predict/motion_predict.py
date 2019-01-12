@@ -12,10 +12,12 @@ import data_utils
 from neuralmodels.loadcheckpoint import loadDRA
 import copy
 import theano
+import srnn_human_motion_predict
+from datetime import datetime
 
 class Predictor:
     def __init__(self, checkpoint):
-        data_utils.load_crf_graph('./crf')
+        data_utils.load_crf_graph(srnn_human_motion_predict.__path__[0] + '/crf')
         print('loading checkpoint...')
         self._model = loadDRA(checkpoint)
         print('loaded!')
@@ -56,18 +58,11 @@ class Predictor:
         return teY
     
     def predict(self, groud_truth_sequence, length):
+        begin = datetime.now()
         features, data_mean, data_std, dimensions_to_ignore, new_idx = data_utils.skeleto_to_feature(groud_truth_sequence)
-        # import pickle
-        # with open('./data_stats.pkl') as f:
-        #     data_stats = pickle.load(f)
-        # with open('./forecast_nodeFeatures.pkl') as f:
-        #     features = pickle.load(f)
-        # data_mean = data_stats['mean']
-        # data_std = data_stats['std']
-        # dimensions_to_ignore = data_stats['ignore_dimensions']
-
         forecast, forecast_node_feature = data_utils.get_predict_data(features)
         predicted_features = self._predict_sequence(forecast, forecast_node_feature, length)
+        print('make a prediction take: ', datetime.now() - begin)
         return data_utils.feature_to_skeleto(predicted_features, data_mean, data_std, dimensions_to_ignore, new_idx)
 
 # just for test

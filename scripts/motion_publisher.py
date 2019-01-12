@@ -5,15 +5,15 @@ import rospy
 from std_msgs.msg import Header
 from srnn_human_motion_predict_for_ros.msg import Skeleto
 
-import data_utils
+from srnn_human_motion_predict import data_utils
 
 g_motion_dataset_path = ''
 
 def motion_publisher():
     global g_motion_dataset_path
-    pub = rospy.Publisher('motion_publisher', Skeleto, queue_size=10)
     rospy.init_node('motion_publisher')
-    rate = rospy.Rate(rospy.get_param('motion_publish_rate', 20))
+    pub = rospy.Publisher('motion_skeleto', Skeleto, queue_size=rospy.get_param('prefix_sequence_length', 50))
+    rate = rospy.Rate(1 / rospy.get_param('frames_interval', 0.05))
     g_motion_dataset_path = rospy.get_param('motion_dataset_path', g_motion_dataset_path)
 
     if len(g_motion_dataset_path) == 0:
