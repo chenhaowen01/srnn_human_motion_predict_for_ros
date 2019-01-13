@@ -40,8 +40,7 @@ def motion_skeleto_subscriber_callback(data):
     g_skeleto_buffer[-1, :] = data.skeleto
     stamp = data.header.stamp
 
-    if g_skeleto_index > 0 and g_skeleto_index % g_prefix_sequence_length == 0:
-        g_skeleto_index = 0
+    if g_skeleto_index > g_predicted_sequence_length and g_skeleto_index % g_prefix_sequence_length == 0:
         rospy.loginfo('make a prediction...')
         predict(copy.deepcopy(g_skeleto_buffer), stamp + rospy.Duration.from_sec(rospy.get_param('frames_interval', 0.02)))
     

@@ -1,7 +1,7 @@
 """Functions to visualize human poses"""
 
 import matplotlib.pyplot as plt
-import data_utils
+from srnn_human_motion_predict import data_utils
 import numpy as np
 import os
 from mpl_toolkits.mplot3d import Axes3D
