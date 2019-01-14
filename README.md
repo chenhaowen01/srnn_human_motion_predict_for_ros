@@ -63,9 +63,9 @@ Create an virtual environment named ros_srnn in conda:
   > source ./theano_env.sh
   > # Start ros core
   > roscore &
-  > # Run the predictor node, it may take very long time, wait it completely loaded.
+  > # Run the predictor node, it may take very long time, wait it completely loaded. Checkpoint path could also be specified by a ros parameter called checkpoint_path.
   > rosrun srnn_human_motion_predict_for_ros motion_predictor.py CHECKPOINTS_PATH/srnn_walking/checkpoint.pik
-  > # Run the publisher after the predictor node has loaded the checkpoint. You may need to run the following command with a new terminal.
+  > # Run the publisher after the predictor node has loaded the checkpoint. You may need to run the following command with a new terminal. Dataset path could also be specified by a ros parameter called motion_dataset_path.
   > rosrun srnn_human_motion_predict_for_ros motion_publisher.py DATASET_PATH/dataset/S7/walking_1.txt
   > # Run the visualize node to see the result. You may need to run the following command with a new terminal.
   > # Real motion:
