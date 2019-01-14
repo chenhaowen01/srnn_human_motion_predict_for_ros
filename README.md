@@ -9,11 +9,13 @@ See their project page for more infomation: [Structural-RNN: Deep Learning on Sp
 ### Requirements
 > It is recommended to install python requirements in a virtual environment created by [conda](https://conda.io/docs/).
 * ROS (Kinetic Kame on Ubuntu 16.04 or Melodic Morenia on Ubuntu 18.04)
-   See [the official install guide](http://www.ros.org/install) to learn how to install ROS.
+  
+  See [the official install guide](http://www.ros.org/install) to learn how to install ROS.
 * Python (2.7)
 * Theano (>=0.6)
 * matplotlib
 * Neural Models (https://github.com/asheshjain399/NeuralModels)
+  
 Create an virtual environment named ros_srnn in conda:
 ```bash
 > # create env and install requirements
