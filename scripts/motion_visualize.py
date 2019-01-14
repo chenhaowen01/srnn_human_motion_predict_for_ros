@@ -19,10 +19,16 @@ g_parent = None
 g_offset = None
 g_rotInd = None
 g_expmapInd = None
+g_preSeq = 0
 
 def motion_visualize_callback(data):
-    global g_preR, g_preT, g_parent, g_offset, g_rotInd, g_expmapInd
+    global g_preR, g_preT, g_parent, g_offset, g_rotInd, g_expmapInd, g_preSeq
     rospy.loginfo('%s: %s' % (data.header.seq, data.header.stamp))
+    if data.header.seq < g_preSeq:
+        g_preR = np.eye(3)
+        g_preT = np.zeros(3)
+    g_preSeq = data.header.seq
+
     skeleto = data.skeleto
     skeleto, g_preR, g_preT = forward_kinematics.revert_coordinate_space(skeleto, g_preR, g_preT)
     xyz = forward_kinematics.fkl(skeleto, g_parent, g_offset, g_rotInd, g_expmapInd)

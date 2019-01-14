@@ -17,6 +17,7 @@ g_skeleto_buffer = np.zeros((g_predicted_sequence_length, 99))
 g_skeleto_index = 0
 g_predictor = None
 g_pub = None
+g_preSeq = 0
 
 def predict(sequence, start_time):
     predicted_motion_skeleto = g_predictor.predict(sequence, g_predicted_sequence_length)
@@ -34,18 +35,21 @@ def predict(sequence, start_time):
         seq += 1
 
 def motion_skeleto_subscriber_callback(data):
-    global g_skeleto_buffer, g_skeleto_index
+    global g_skeleto_buffer, g_skeleto_index, g_preSeq
     rospy.loginfo('%s: %s' % (data.header.seq, data.header.stamp))
+    if data.header.seq < g_preSeq:
+        g_preSeq = 0
+        g_skeleto_index = 0
+
     g_skeleto_buffer[:-1, :] = g_skeleto_buffer[1:, :]
     g_skeleto_buffer[-1, :] = data.skeleto
     stamp = data.header.stamp
 
-    if g_skeleto_index > g_predicted_sequence_length and g_skeleto_index % g_prefix_sequence_length == 0:
-        rospy.loginfo('make a prediction...')
-        predict(copy.deepcopy(g_skeleto_buffer), stamp + rospy.Duration.from_sec(rospy.get_param('frames_interval', 0.02)))
-    
     g_skeleto_index += 1
 
+    if g_skeleto_index >= g_prefix_sequence_length and g_skeleto_index % g_predicted_sequence_length == 0:
+        rospy.loginfo('make a prediction...')
+        predict(copy.deepcopy(g_skeleto_buffer), stamp + rospy.Duration.from_sec(rospy.get_param('frames_interval', 0.02)))
 
 def motion_predictor():
     global g_checkpoint_path, g_predictor, g_pub
