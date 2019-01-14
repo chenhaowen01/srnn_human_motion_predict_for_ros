@@ -20,7 +20,9 @@ g_pub = None
 g_preSeq = 0
 
 def predict(sequence, start_time):
+    # data_utils.writeFloatAsCVS('gt%s.txt' % rospy.get_rostime(), sequence)
     predicted_motion_skeleto = g_predictor.predict(sequence, g_predicted_sequence_length)
+    # data_utils.writeFloatAsCVS('pd%s.txt' % rospy.get_rostime(), predicted_motion_skeleto)
     
     header = Header()
     header.frame_id = 'main'
@@ -38,11 +40,13 @@ def motion_skeleto_subscriber_callback(data):
     global g_skeleto_buffer, g_skeleto_index, g_preSeq
     rospy.loginfo('%s: %s' % (data.header.seq, data.header.stamp))
     if data.header.seq < g_preSeq:
+        rospy.loginfo('invalid seq!')
         g_preSeq = 0
         g_skeleto_index = 0
 
     g_skeleto_buffer[:-1, :] = g_skeleto_buffer[1:, :]
     g_skeleto_buffer[-1, :] = data.skeleto
+    g_preSeq = data.header.seq
     stamp = data.header.stamp
 
     g_skeleto_index += 1
