@@ -59,6 +59,8 @@ Create an virtual environment named ros_srnn in conda:
   
   Some launch file will be created to make it easy to run later.
   ```bash
+  > # export theano env, if you want to access gpu acceleration, you could use theano_gpu_env.sh instead.
+  > source ./theano_env.sh
   > # Start ros core
   > roscore &
   > # Run the predictor node, it may take very long time, wait it completely loaded.
