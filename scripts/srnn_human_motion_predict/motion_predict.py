@@ -8,7 +8,7 @@ from __future__ import print_function
 
 import sys
 import numpy as np
-import data_utils
+from srnn_human_motion_predict import data_utils
 from neuralmodels.loadcheckpoint import loadDRA
 import copy
 import theano
