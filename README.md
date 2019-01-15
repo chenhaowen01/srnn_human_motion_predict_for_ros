@@ -56,23 +56,15 @@ Create an virtual environment named ros_srnn in conda:
   > catkin_make
   ```
 * Run
-  
-  Some launch file will be created to make it easy to run later.
   ```bash
-  > # export theano env, if you want to access gpu acceleration, you could use theano_gpu_env.sh instead.
-  > source ./theano_env.sh
-  > # Start ros core
-  > roscore &
   > # Run the predictor node, it may take very long time, wait it completely loaded. Checkpoint path could also be specified by a ros parameter called checkpoint_path.
-  > rosrun srnn_human_motion_predict_for_ros motion_predictor.py CHECKPOINTS_PATH/srnn_walking/checkpoint.pik
+  > roslaunch srnn_human_motion_predict_for_ros predictor.launch checkpoint_path:=CHECKPOINTS_PATH/srnn_walking/checkpoint.pik
   > # Run the publisher after the predictor node has loaded the checkpoint. You may need to run the following command with a new terminal. Dataset path could also be specified by a ros parameter called motion_dataset_path.
-  > rosrun srnn_human_motion_predict_for_ros motion_publisher.py DATASET_PATH/dataset/S7/walking_1.txt
+  > roslaunch srnn_human_motion_predict_for_ros motion_publisher.launch motion_dataset_path:=DATASET_PATH/dataset/S7/walking_1.txt
   > # Run the visualize node to see the result. You may need to run the following command with a new terminal.
-  > # Real motion:
-  > rosrun srnn_human_motion_predict_for_ros motion_visualize.py motion:=/motion_skeleto
-  > # Predicted motion:
-  > rosrun srnn_human_motion_predict_for_ros motion_visualize.py motion:=/predicted_motion_skeleto
+  > roslaunch srnn_human_motion_predict_for_ros visulize.launch
   ```
+  Then you can see rviz run, and a skeleto walking in it.
 ## Video
 Will upload later.
 ## FAQ

@@ -11,4 +11,5 @@
             <remap from="motion" to="/predicted_motion_skeleto"/>
         </node>
     </group>
+    <node pkg="rviz" name="rviz" type="rviz" args="-d $(find srnn_human_motion_predict_for_ros)/rviz/rviz.rviz"/>
 </launch>
