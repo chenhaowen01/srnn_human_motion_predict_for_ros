@@ -1,0 +1,5 @@
+<launch>
+    <arg name="motion_dataset_path"/>
+    <param name="motion_dataset_path" value="$(arg motion_dataset_path)"/>
+    <node pkg="srnn_human_motion_predict_for_ros" name="motion_publisher" type="motion_publisher.py" output="screen" />
+</launch>

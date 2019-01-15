@@ -53,6 +53,8 @@ offset = offset.reshape(-1,3)
 
 expmapInd = np.split(np.arange(4,100)-1,32)
 
+g_tf_prefix = ''
+
 def motion_visualize_callback(data):
 
     rospy.loginfo('%s: %s' % (data.header.seq, data.header.stamp))
@@ -75,13 +77,16 @@ def motion_visualize_callback(data):
             rot = data_utils.expmap2rotmat(angles[expmapInd[i]])
             rm[0:3, 0:3] = np.linalg.inv(rot)
             quat = tf.transformations.quaternion_from_matrix(rm)
-            br.sendTransform(tran / 1000, quat, stamp, 'j%s' % i, 'j%s' % parent[i])
+            br.sendTransform(tran / 1000, quat, stamp, '%sj%s' % (g_tf_prefix, i), '%sj%s' % (g_tf_prefix, parent[i]))
         else:
             quat = tf.transformations.quaternion_from_euler(np.pi/2, 0, 0)
-            br.sendTransform(tran / 1000, quat, stamp, 'j%s' % i, 'skeleto')
+            br.sendTransform(tran / 1000, quat, stamp, '%sj%s' % (g_tf_prefix, i), '%sskeleto' % g_tf_prefix)
 
 def main():
+    global g_tf_prefix
     rospy.init_node('motion_tf_broadcaster', anonymous=True)
+    g_tf_prefix = rospy.get_param('tf_prefix', g_tf_prefix)
+    print('tf_prefix: ', g_tf_prefix)
     rospy.Subscriber('motion', Skeleto, motion_visualize_callback, queue_size=100)
     rospy.spin()
 

@@ -1,0 +1,14 @@
+<launch>
+    <group ns="real_motion">
+        <param name="tf_prefix" value="gt_" />
+        <node pkg="srnn_human_motion_predict_for_ros" name="broadcaster" type="motion_tf_broadcaster.py" output="screen">
+            <remap from="motion" to="/motion_skeleto"/>
+        </node>
+    </group>
+    <group ns="predicted_motion">
+        <param name="tf_prefix" value="pd_" />
+        <node pkg="srnn_human_motion_predict_for_ros" name="broadcaster" type="motion_tf_broadcaster.py" output="screen">
+            <remap from="motion" to="/predicted_motion_skeleto"/>
+        </node>
+    </group>
+</launch>

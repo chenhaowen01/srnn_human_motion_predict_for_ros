@@ -1,0 +1,7 @@
+<launch>
+    <arg name="device" default="cpu"/>
+    <arg name="checkpoint_path"/>
+    <param name="checkpoint_path" value="$(arg checkpoint_path)"/>
+    <env name="THEANO_FLAGS" value="floatX=float32,optimizer=None,device=$(arg device)"/>
+    <node pkg="srnn_human_motion_predict_for_ros" name="predictor" type="motion_predictor.py" output="screen" />
+</launch>
