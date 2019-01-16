@@ -65,6 +65,23 @@ Create an virtual environment named ros_srnn in conda:
   > roslaunch srnn_human_motion_predict_for_ros visulize.launch
   ```
   Then you can see rviz run, and a skeleto walking in it.
+
+## Overview
+In this project, serveral ROS nodes are created for human motion prediction. 
+1. **human_motion_publisher** node:
+   This node read and parse human motion data from H3.6m dataset, then publish human motion data to a ROS topic called **motion_skeleto**. Actually, this node simulate a human motion capture system. You can also control the publish rate by a ROS parameter **frames_interval**.
+2. **human_motion_predictor** node:
+   This node subcribes to **motion_skeleto** to get real human motion data, makes predictions and publishes the predicted human motion data to a ROS topic **predicted_motion_skeleto**. The implementation of the prediction algorithm is *S-RNN* (from [RNNexp](https://github.com/asheshjain399/RNNexp)). You can use the following ros parameters to control the prediction process.
+   * checkpoint_path: path to the pre-trained model;
+   * prefix_sequence_length: sequence length of real human motion data to make a prediction;
+   * predicted_sequence_length: sequence length of the predicted human motion data.
+3. **motion_tf_broadcaster** node:
+   This node subcribes to **motion_skeleto** and **predicted_motion_skeleto**, converts the data format and broadcasts the real and predicted motion data to tf tree, so that we can visualize the result in rviz.
+
+The relationship of these nodes can also be presented as the following figure:
+
+![ROS graph](images/rosgraph.png)
+
 ## Video
 Will upload later.
 ## FAQ
