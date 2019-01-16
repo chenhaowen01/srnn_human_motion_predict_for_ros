@@ -1,4 +1,5 @@
 # SRNN Human Motion Prediction for ROS
+En|[中文](README_zh.md)
 
 ## Summary
 This project is entirely from the paper of Ashesh Jain. In the paper, authors propose a generic and proincipled method to involved high-level spatio-temporal structures into *Recurrent Neural Networks* (*RNNs*) called *Structural-RNN* (*S-RNN*). This method has significant improvements with some spatio-temporal problems includings: human motion modeling, human-object interaction and driver maneuver anticipation. In this project, the S-RNN method is involved into ROS to make predictions of human motion.

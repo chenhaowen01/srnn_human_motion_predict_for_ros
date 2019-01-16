@@ -1,4 +1,5 @@
 # SRNN Human Motion Prediction for ROS
+[En](README.md)|中文
 
 ## 概要
 本项目完全来源于Ashesh Jain等人的论文，在论文中，作者提出了一种通用方法，用来将高层次的时空结构引入*递归神经网络*（*Recurrent Neural Networks, RNNs*），称之为*结构化递归神经网络*（*Structural-RNN, S-RNN*）。这种方法在处理一些跟时空有关的问题时，有显著的提升，如：人类运动建模、人类物体交互、驾驶动机预测等。在本项目中，S-RNN方法被引入到ROS中用于做人类运动预测。
