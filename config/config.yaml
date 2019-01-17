@@ -1,0 +1,3 @@
+frames_interval: 1
+predicted_sequence_length: 5
+prefix_sequence_length: 50
