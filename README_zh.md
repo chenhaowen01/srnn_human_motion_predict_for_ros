@@ -94,7 +94,7 @@ Create an virtual environment named ros_srnn in conda:
    受限于硬件，完成一次预测需要很长时间，因此我们只能以较低的速率来发布数据。如果你有足够的计算资源，可以通过修改ROS参数**frames_interval**来使publisher节点运行在一个较高的速率。
 2. 我可以使用GPU来加速预测过程吗？
 
-   当然可以，在通过roslaunch运行predictor节点是，年可以通过指定命令行参数**device**（默认是cpu）来获得GPU加速。例如：
+   当然可以，在通过roslaunch运行predictor节点时，可以通过指定命令行参数**device**（默认是cpu）来获得GPU加速。例如：
    ```bash
    > roslaunch srnn_human_motion_predict_for_ros predictor.launch checkpoint_path:=CHECKPOINTS_PATH/srnn_walking/checkpoint.pik device:=cuda0
    ```
