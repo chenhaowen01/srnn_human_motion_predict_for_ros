@@ -85,4 +85,15 @@ The relationship of these nodes can also be presented as the following figure:
 
 ## Video
 Will upload later.
+
 ## FAQ
+1. Why the motion publisher publish motion data at a slow rate?
+   
+   Limited by hardware, the prediction process could only run very slow, hence we could only publish data slowly. If you have enough computing resources, you could change the ros parameter **frames_interval** to make it run at a high rate.
+2. Could I use GPU to accelelate the prediction process?
+   
+   Of course, when you run the predictor node by roslaunch, you could specify a commandline argument **device** (default as cpu) to you GPU device access GPU accelelation. For example:
+   ```bash
+   > roslaunch srnn_human_motion_predict_for_ros predictor.launch checkpoint_path:=CHECKPOINTS_PATH/srnn_walking/checkpoint.pik device:=cuda0
+   ```
+   
