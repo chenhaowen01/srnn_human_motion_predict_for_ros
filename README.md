@@ -65,7 +65,7 @@ Create an virtual environment named ros_srnn in conda:
   > # Run the visualize node to see the result. You may need to run the following command with a new terminal.
   > roslaunch srnn_human_motion_predict_for_ros visulize.launch
   ```
-  Then you can see rviz run, and a skeleto walking in it.
+  Then you can see rviz run, and two skeletos walking in it. One is the real motion, another is the predicted motion.
 
 ## Overview
 In this project, serveral ROS nodes are created for human motion prediction. 

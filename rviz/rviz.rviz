@@ -120,7 +120,71 @@ Visualization Manager:
           Value: true
         gt_j9:
           Value: true
-        gt_skeleto:
+        pd_j0:
+          Value: true
+        pd_j1:
+          Value: true
+        pd_j10:
+          Value: true
+        pd_j11:
+          Value: true
+        pd_j12:
+          Value: true
+        pd_j13:
+          Value: true
+        pd_j14:
+          Value: true
+        pd_j15:
+          Value: true
+        pd_j16:
+          Value: true
+        pd_j17:
+          Value: true
+        pd_j18:
+          Value: true
+        pd_j19:
+          Value: true
+        pd_j2:
+          Value: true
+        pd_j20:
+          Value: true
+        pd_j21:
+          Value: true
+        pd_j22:
+          Value: true
+        pd_j23:
+          Value: true
+        pd_j24:
+          Value: true
+        pd_j25:
+          Value: true
+        pd_j26:
+          Value: true
+        pd_j27:
+          Value: true
+        pd_j28:
+          Value: true
+        pd_j29:
+          Value: true
+        pd_j3:
+          Value: true
+        pd_j30:
+          Value: true
+        pd_j31:
+          Value: true
+        pd_j4:
+          Value: true
+        pd_j5:
+          Value: true
+        pd_j6:
+          Value: true
+        pd_j7:
+          Value: true
+        pd_j8:
+          Value: true
+        pd_j9:
+          Value: true
+        skeleto:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -128,7 +192,7 @@ Visualization Manager:
       Show Axes: false
       Show Names: false
       Tree:
-        gt_skeleto:
+        skeleto:
           gt_j0:
             gt_j1:
               gt_j2:
@@ -168,13 +232,52 @@ Visualization Manager:
                   gt_j9:
                     gt_j10:
                       {}
+          pd_j0:
+            pd_j1:
+              pd_j2:
+                pd_j3:
+                  pd_j4:
+                    pd_j5:
+                      {}
+            pd_j11:
+              pd_j12:
+                pd_j13:
+                  pd_j14:
+                    pd_j15:
+                      {}
+                pd_j16:
+                  pd_j17:
+                    pd_j18:
+                      pd_j19:
+                        pd_j20:
+                          pd_j21:
+                            {}
+                        pd_j22:
+                          pd_j23:
+                            {}
+                pd_j24:
+                  pd_j25:
+                    pd_j26:
+                      pd_j27:
+                        pd_j28:
+                          pd_j29:
+                            {}
+                        pd_j30:
+                          pd_j31:
+                            {}
+            pd_j6:
+              pd_j7:
+                pd_j8:
+                  pd_j9:
+                    pd_j10:
+                      {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: gt_skeleto
+    Fixed Frame: skeleto
     Frame Rate: 30
   Name: root
   Tools:
@@ -232,4 +335,4 @@ Window Geometry:
     collapsed: false
   Width: 1200
   X: 67
-  Y: 30
+  Y: 27

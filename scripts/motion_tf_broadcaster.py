@@ -68,7 +68,10 @@ def motion_visualize_callback(data):
     njoints   = 32
 
     stamp = data.header.stamp
+    rate = rospy.Rate(1000)
     br = tf.TransformBroadcaster()
+    while rospy.get_rostime() < stamp:
+        rate.sleep()
     for i in range(njoints):
         tran = offset[i]
         rot = np.eye(3)
@@ -80,7 +83,7 @@ def motion_visualize_callback(data):
             br.sendTransform(tran / 1000, quat, stamp, '%sj%s' % (g_tf_prefix, i), '%sj%s' % (g_tf_prefix, parent[i]))
         else:
             quat = tf.transformations.quaternion_from_euler(np.pi/2, 0, 0)
-            br.sendTransform(tran / 1000, quat, stamp, '%sj%s' % (g_tf_prefix, i), '%sskeleto' % g_tf_prefix)
+            br.sendTransform(tran / 1000, quat, stamp, '%sj%s' % (g_tf_prefix, i), 'skeleto')
 
 def main():
     global g_tf_prefix

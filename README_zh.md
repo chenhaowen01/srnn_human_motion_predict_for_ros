@@ -68,7 +68,7 @@ Create an virtual environment named ros_srnn in conda:
   > # 运行可视化节点查看结果。以下命令可能需要打开一个新的终端窗口来运行。
   > roslaunch srnn_human_motion_predict_for_ros visulize.launch
   ```
-  rviz随后会运行起来，里面便可以看到一个运动中的人体骨架。
+  rviz随后会运行起来，里面便可以看到两个运动中的人体骨架。一个是真实的运动，另一个是预测的运动。
 
 ## 概述
 在项目中，使用了多个ROS节点来完成人类运动的预测。
