@@ -87,7 +87,7 @@ Create an virtual environment named ros_srnn in conda:
 ![ROS graph](images/rosgraph.png)
 
 ## 视频
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fjdQ9AwGgsI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![srnn human motion prediction for ros](https://img.youtube.com/vi/fjdQ9AwGgsI/0.jpg)](https://youtu.be/fjdQ9AwGgsI)
 
 ## FAQ
 1. 为什么motion publisher节点以很低的速率发布运动数据？

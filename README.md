@@ -84,7 +84,7 @@ The relationship of these nodes can also be presented as the following figure:
 ![ROS graph](images/rosgraph.png)
 
 ## Video
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fjdQ9AwGgsI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![srnn human motion prediction for ros](https://img.youtube.com/vi/fjdQ9AwGgsI/0.jpg)](https://youtu.be/fjdQ9AwGgsI)
 
 ## FAQ
 1. Why the motion publisher publish motion data at a slow rate?
